@@ -37,14 +37,12 @@ export default async function Page() {
   );
   const {size, updatedAt} = await kv.json.get('s3-explorer-summary');
   return (
-    <div className="flex flex-col w-full justify-center p-4">
-      <ContentTable
-        contentSize={size}
-        objects={objects}
-        title="You are currently browsing content in: /"
-        updatedAt={updatedAt}
-      />
-    </div>
+    <ContentTable
+      contentSize={size}
+      objects={objects}
+      title="You are currently browsing content in: /"
+      updatedAt={updatedAt}
+    />
   );
 }
 

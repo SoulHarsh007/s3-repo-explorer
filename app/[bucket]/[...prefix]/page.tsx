@@ -45,9 +45,7 @@ export default async function Page({
     return notFound();
   }
   if (!bucket.prefixes.includes(actualPrefix)) {
-    return (
-      <div className="flex w-full justify-center p-4">Prefix not found</div>
-    );
+    return notFound();
   }
   const objects = await s3Utils.listObjects(bucket.id, actualPrefix);
   const {size: bucketSize, updatedAt: bucketUpdatedAt} = await kv.json.get(
@@ -55,21 +53,19 @@ export default async function Page({
   );
   const {size, updatedAt} = await kv.json.get(`${bucket.id}/${actualPrefix}`);
   return (
-    <div className="flex flex-col w-full justify-center p-4">
-      <ContentTable
-        backDir={{
-          class: 'STANDARD',
-          key: '../',
-          lastModified: bucketUpdatedAt,
-          redirect: `/${bucket.id}`,
-          size: bucketSize,
-        }}
-        contentSize={size}
-        objects={objects}
-        title={`You are currently browsing content in: /${bucket.id}/${actualPrefix}`}
-        updatedAt={updatedAt}
-      />
-    </div>
+    <ContentTable
+      backDir={{
+        class: 'STANDARD',
+        key: '../',
+        lastModified: bucketUpdatedAt,
+        redirect: `/${bucket.id}`,
+        size: bucketSize,
+      }}
+      contentSize={size}
+      objects={objects}
+      title={`You are currently browsing content in: /${bucket.id}/${actualPrefix}`}
+      updatedAt={updatedAt}
+    />
   );
 }
 

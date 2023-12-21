@@ -1,0 +1,9 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "env": ["API_BASE_URL", "AUTH_KEY"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    }
+  }
+}

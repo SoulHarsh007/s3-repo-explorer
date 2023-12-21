@@ -52,21 +52,19 @@ export default async function Page({
     's3-explorer-summary'
   );
   return (
-    <div className="flex flex-col w-full justify-center p-4">
-      <ContentTable
-        backDir={{
-          class: 'STANDARD',
-          key: '../',
-          lastModified: rootUpdatedAt,
-          redirect: '/',
-          size: rootSize,
-        }}
-        contentSize={size}
-        objects={objects}
-        title={`You are currently browsing content in: /${bucket.id}`}
-        updatedAt={updatedAt}
-      />
-    </div>
+    <ContentTable
+      backDir={{
+        class: 'STANDARD',
+        key: '../',
+        lastModified: rootUpdatedAt,
+        redirect: '/',
+        size: rootSize,
+      }}
+      contentSize={size}
+      objects={objects}
+      title={`You are currently browsing content in: /${bucket.id}`}
+      updatedAt={updatedAt}
+    />
   );
 }
 

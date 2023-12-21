@@ -18,7 +18,6 @@ import {
   TableHeaderCell,
   TableRow,
   TextInput,
-  Title,
 } from '@tremor/react';
 import Link from 'next/link';
 import {Suspense, useState} from 'react';
@@ -115,13 +114,24 @@ export default function ContentTable({
   updatedAt?: string;
 }>) {
   const [searchString, setSearchString] = useState('');
-
-  const isObjectSelected = (object: BucketObject) =>
-    object.key.toLowerCase().includes(searchString.toLowerCase()) ||
-    searchString.length === 0;
-
+  const searchKeys = searchString
+    .trim()
+    .toLowerCase()
+    .split(' ')
+    .map(x => x.trim());
+  const isObjectSelected = (object: BucketObject) => {
+    if (searchString.trim().length === 0) {
+      return true;
+    }
+    const objectKeys = object.key.toLowerCase().split('-');
+    return (
+      searchKeys.findIndex(
+        searchKey => objectKeys.findIndex(x => x.includes(searchKey)) !== -1
+      ) !== -1
+    );
+  };
   return (
-    <Card>
+    <Card className="flex-auto h-full">
       <Flex
         alignItems="center"
         className="space-y-2"
@@ -129,16 +139,18 @@ export default function ContentTable({
         justifyContent="center"
       >
         <Flex className="space-x-2" justifyContent="center">
-          <Title className="text-center">
+          <div className="font-medium text-tremor-title text-center text-tremor-content-emphasis dark:text-dark-tremor-content-emphasis">
             {isLoading ? (
               <div className="flex justify-center p-4 motion-safe:animate-pulse">
-                <Loader />
-                <div>Loading content...</div>
+                <div className="mt-1">
+                  <Loader />
+                </div>
+                <div className="mb-1">Loading content...</div>
               </div>
             ) : (
               title
             )}
-          </Title>
+          </div>
         </Flex>
         <Flex className="space-x-2" justifyContent="center">
           <Badge color="green" icon={QueueListIcon}>

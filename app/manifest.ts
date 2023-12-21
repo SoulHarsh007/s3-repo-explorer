@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     background_color: '#fff',
     description:
-      'Explore S3 buckets used as package repositories for RebornOS and CachyOS Linux distributions, Hosted with 💖 by SoulHarsh007',
+      'Explore S3 buckets used as package repositories for RebornOS and CachyOS (Linux distributions), Hosted with 💖 by SoulHarsh007',
     display: 'standalone',
     icons: [
       {
