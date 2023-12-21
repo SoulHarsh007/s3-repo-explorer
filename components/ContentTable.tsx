@@ -152,7 +152,7 @@ export default function ContentTable({
             )}
           </div>
         </Flex>
-        <Flex className="space-x-2" justifyContent="center">
+        <div className="flex justify-center space-x-2 space-y-2 md:space-y-0 md:flex-row flex-col items-center">
           <Badge color="green" icon={QueueListIcon}>
             {objects.length}
           </Badge>
@@ -162,7 +162,7 @@ export default function ContentTable({
           <Badge color="green" icon={ClockIcon}>
             {updatedAt !== 'N/A' ? new Date(updatedAt).toLocaleString() : 'N/A'}
           </Badge>
-        </Flex>
+        </div>
         <TextInput
           className="max-w-2xl"
           disabled={isLoading}
