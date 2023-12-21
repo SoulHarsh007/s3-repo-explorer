@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <Card className="rounded-lg shadow p-4 w-full h-[72px]">
       <div className="w-full mx-auto md:flex md:items-center md:justify-between h-full">
-        <div className="text-sm text-center">
+        <div className="md:text-base text-sm text-center">
           Built with 💖 by{' '}
           <Link
             className="underline decoration-dotted"
@@ -14,7 +14,7 @@ export default function Footer() {
             SoulHarsh007
           </Link>
         </div>
-        <ul className="flex flex-wrap items-center mt-3 md:text-lg text-sm font-medium sm:mt-0 justify-center">
+        <ul className="flex flex-wrap items-center mt-3 md:text-base text-sm font-medium sm:mt-0 justify-center">
           <li>
             <Link
               className="hover:underline me-4 md:me-6"
