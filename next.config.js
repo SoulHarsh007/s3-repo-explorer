@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
-  swcMinify: true,
-  poweredByHeader: false,
   optimizeFonts: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  staticPageGenerationTimeout: 600,
+  swcMinify: true,
 };
