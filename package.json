@@ -33,7 +33,7 @@
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-perfectionist": "2.5.0",
-    "eslint-plugin-prettier": "5.1.0",
+    "eslint-plugin-prettier": "5.1.1",
     "husky": "8.0.3",
     "postcss": "8.4.32",
     "turbo": "1.11.2",
