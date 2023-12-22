@@ -13,15 +13,19 @@ const setupS3Utils = async () => {
   }
 };
 
-export async function generateStaticParams() {
-  const routes: {bucket: string; prefix: string[]}[] = [];
+export async function generateStaticParams({
+  params: {bucket},
+}: {
+  params: {bucket: string};
+}) {
   await setupS3Utils();
-  s3Utils.buckets.forEach(bucket => {
-    bucket.prefixes.forEach(prefix => {
-      routes.push({bucket: bucket.id, prefix: prefix.split('/')});
-    });
-  });
-  return routes;
+  const bucketObj = s3Utils.buckets.find(x => x.id === bucket);
+  if (!bucketObj) {
+    return [];
+  }
+  return bucketObj.prefixes.map(prefix => ({
+    prefix: prefix.split('/'),
+  }));
 }
 
 export default async function Page({
