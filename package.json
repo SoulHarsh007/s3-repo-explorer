@@ -35,7 +35,7 @@
     "eslint-plugin-prettier": "5.1.2",
     "husky": "8.0.3",
     "postcss": "8.4.32",
-    "turbo": "1.11.2",
+    "turbo": "1.11.3",
     "typescript": "5.3.3"
   },
   "engines": {
