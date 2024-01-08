@@ -14,7 +14,7 @@ const setupS3Utils = async () => {
 
 export default async function Page() {
   await setupS3Utils();
-  fetch(`${process.env.API_BASE_URL}/api/update-bucket-size`, {
+  await fetch(`${process.env.API_BASE_URL}/api/update-bucket-size`, {
     headers: {
       'X-AUTH-KEY': `${process.env.AUTH_KEY}`,
     },

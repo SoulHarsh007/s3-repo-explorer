@@ -22,15 +22,6 @@ export default async function Page({
   params,
 }: Readonly<{params: {bucket: string}}>) {
   await setupS3Utils();
-  fetch(`${process.env.API_BASE_URL}/api/update-bucket-size`, {
-    headers: {
-      'X-AUTH-KEY': `${process.env.AUTH_KEY}`,
-    },
-    method: 'POST',
-    next: {
-      revalidate,
-    },
-  });
   const bucket = s3Utils.buckets.find(x => x.id === params.bucket);
   if (!bucket) {
     return notFound();
